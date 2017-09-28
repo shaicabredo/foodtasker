@@ -1,0 +1,50 @@
+{% extends 'restaurant/base.html' %}
+
+{% block script %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.min.js"></script>
+{% endblock %}
+
+{% block page %}
+
+  <div class="row">
+    <div class="col-lg-8">
+
+      <!-- Revenue by week -->
+      <div class="panel">
+          <div class="panel-heading bg-blue">
+            <h4 class="panel-title text-center text-white">
+              Revenue by Week
+            </h4>
+          </div>
+          <div class="panel-body">
+            <canvas class="revenueChart" height="110"></canvas>
+            <script>
+                var ctx = document.getElementById("revenueChart").getContext("2d");
+                var data = {
+                    labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+                    datasets: [
+                      {
+                        label: "Revenue by Week",
+                        backgroundColor: "rgba(54,162,235,0.9)",
+                        hoverBackgroundColor: "rgba(54,162,235,1)",
+                        data: [23,54,23,65,35,32,66]
+                      }
+                    ]
+                };
+
+                new Chart(ctx, {
+                  type: 'bar',
+                  data: data
+                })
+
+            </script>
+          </div>
+      </div>
+
+
+      <!-- Orders by week -->
+
+    </div>
+  </div>
+
+{% endblock %}
